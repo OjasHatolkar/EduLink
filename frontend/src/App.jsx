@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { postJson } from './api'
 import ProjectIdea from './ProjectIdea'
+import Mascot from './Mascot'
 
 const MAX_NOTES_LENGTH = 8000
 
@@ -130,6 +131,18 @@ function App() {
                     />
                 </section>
             )}
+            <Mascot nameA={nameA} notesA={notesA} nameB={nameB} notesB={notesB} />
+
+            <footer className="credits">
+                <a
+                    href="https://www.flaticon.com/free-icons/dinosaur"
+                    title="dinosaur icons"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Dinosaur icons created by Magnific - Flaticon
+                </a>
+            </footer>
         </main>
     )
 }
