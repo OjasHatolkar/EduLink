@@ -56,10 +56,4 @@ public class ConnectController {
         }
         return subject.name().trim();
     }
-
-    @ExceptionHandler(LlmException.class)
-    public ResponseEntity<ErrorResponse> handleLlmFailure(LlmException e) {
-        return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
-                .body(new ErrorResponse("The AI service didn't return usable results. Try again."));
-    }
 }

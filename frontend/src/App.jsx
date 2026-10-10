@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+import { postJson } from './api'
+import ProjectIdea from './ProjectIdea'
 
 const MAX_NOTES_LENGTH = 8000
 
@@ -43,30 +45,13 @@ function App() {
         setResult(null)
 
         try {
-            const response = await fetch('/api/connect', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    subjectA: { name: nameA, notes: notesA },
-                    subjectB: { name: nameB, notes: notesB },
-                }),
+            const data = await postJson('/api/connect', {
+                subjectA: { name: nameA, notes: notesA },
+                subjectB: { name: nameB, notes: notesB },
             })
-
-            if (!response.ok) {
-                let message = 'Something went wrong. Please try again.'
-                try {
-                    const body = await response.json()
-                    if (body.error) message = body.error
-                } catch {
-                    // The error body wasn't JSON, so keep the default message.
-                }
-                setError(message)
-                return
-            }
-
-            setResult(await response.json())
-        } catch {
-            setError('Could not reach the server. Is the backend running?')
+            setResult(data)
+        } catch (e) {
+            setError(e.message)
         } finally {
             setLoading(false)
         }
@@ -138,6 +123,11 @@ function App() {
                             )}
                         </article>
                     ))}
+                    <ProjectIdea
+                        connections={result.connections}
+                        nameA={nameA}
+                        nameB={nameB}
+                    />
                 </section>
             )}
         </main>

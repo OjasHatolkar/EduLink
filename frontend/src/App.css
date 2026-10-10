@@ -133,3 +133,72 @@ button:disabled {
   overflow: hidden;
   margin: 6px 0 0;
 }
+
+.project-idea {
+  margin-top: 32px;
+}
+
+button.secondary {
+  background: #e8ebf5;
+  color: #2b3a8c;
+}
+
+dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 24px;
+  width: calc(100% - 40px);
+  max-width: 420px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+dialog::backdrop {
+  background: rgba(20, 24, 40, 0.5);
+}
+
+dialog h3 {
+  margin-top: 0;
+}
+
+dialog label {
+  display: block;
+  margin-top: 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+dialog select,
+dialog textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid #c9ced8;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: normal;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.dialog-actions button {
+  margin-top: 0;
+}
+
+.idea {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid #e1e4ea;
+  border-left: 4px solid #3b5bdb;
+  border-radius: 12px;
+}
+
+.idea h3 {
+  margin-top: 0;
+}
