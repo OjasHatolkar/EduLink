@@ -1,4 +1,4 @@
 package com.edulink.edu_link.dto;
 
-public class Subject {
-}
+// Subject.java
+public record Subject(String name, String notes) {}

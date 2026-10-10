@@ -1,4 +1,4 @@
 package com.edulink.edu_link.dto;
 
-public class ErrorResponse {
-}
+// ErrorResponse.java
+public record ErrorResponse(String error) {}
