@@ -3,6 +3,7 @@ package com.edulink.edu_link;
 import com.edulink.edu_link.dto.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping("/api")
@@ -54,5 +55,11 @@ public class ConnectController {
             return fallback;
         }
         return subject.name().trim();
+    }
+
+    @ExceptionHandler(LlmException.class)
+    public ResponseEntity<ErrorResponse> handleLlmFailure(LlmException e) {
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
+                .body(new ErrorResponse("The AI service didn't return usable results. Try again."));
     }
 }
